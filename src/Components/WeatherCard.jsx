@@ -25,20 +25,30 @@ const WeatherCard = ({
 
   useEffect(() => {
     if (iconString) {
-      if (iconString.toLowerCase().includes('cloud')) {
+      switch (true) {
+      case iconString.toLowerCase().includes('cloud'):
         setIcon(cloud)
-      } else if (iconString.toLowerCase().includes('rain')) {
+        break
+      case iconString.toLowerCase().includes('rain'):
         setIcon(rain)
-      } else if (iconString.toLowerCase().includes('clear')) {
+        break
+      case iconString.toLowerCase().includes('clear'):
         setIcon(sun)
-      } else if (iconString.toLowerCase().includes('thunder')) {
+        break
+      case iconString.toLowerCase().includes('thunder'):
         setIcon(storm)
-      } else if (iconString.toLowerCase().includes('fog')) {
+        break
+      case iconString.toLowerCase().includes('fog'):
         setIcon(fog)
-      } else if (iconString.toLowerCase().includes('snow')) {
+        break
+      case iconString.toLowerCase().includes('snow'):
         setIcon(snow)
-      } else if (iconString.toLowerCase().includes('wind')) {
+        break
+      case iconString.toLowerCase().includes('wind'):
         setIcon(wind)
+        break
+      default:
+        setIcon(sun)
       }
     }
   }, [iconString])
