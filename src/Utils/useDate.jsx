@@ -4,11 +4,6 @@
  * @returns {Object} An object containing the current date and time.
  * @returns {string} date - The current date in the format "Weekday, Day, Month".
  * @returns {string} time - The current time in the format "Hour:Minute AM/PM".
- *
- * @example
- * const { date, time } = useDate();
- * console.log(date); // e.g., "Friday, 13, December"
- * console.log(time); // e.g., "10:30 AM"
  */
 import { useEffect, useState } from "react";
 
