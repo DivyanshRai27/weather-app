@@ -12,13 +12,13 @@ import '../index.css';
 
 // Mapping weather conditions to their respective icons
 const iconMap = {
-  cloud: cloud,
-  rain: rain,
+  cloud,
+  rain,
   clear: sun,
   thunder: storm,
-  fog: fog,
-  snow: snow,
-  wind: wind,
+  fog,
+  snow,
+  wind,
 };
 
 const WeatherCard = ({
