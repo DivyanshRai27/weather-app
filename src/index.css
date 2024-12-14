@@ -7,3 +7,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.glassCard {
+
+  backdrop-filter: blur(10px);
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}

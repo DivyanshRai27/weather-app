@@ -5,14 +5,18 @@ import { useStateContext } from './Context';
 import { BackgroundLayout, WeatherCard, MiniCard } from './Components';
 
 function App() {
+  // State to manage the input value for the search field
   const [input, setInput] = useState('');
+
   const { weather, thisLocation, values, place, setPlace } = useStateContext();
 
+  // Function to update the place state with the input value and clear the input field
   const submitCity = () => {
     setPlace(input);
     setInput('');
   };
 
+  // Event handler for the Enter key press in the input field
   const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
       submitCity();
