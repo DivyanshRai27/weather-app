@@ -29,6 +29,8 @@ function App() {
     setDegrees((prevDegrees) => (prevDegrees === 'C' ? 'F' : 'C'));
   };
 
+  const { isLoading } = useStateContext();
+
   return (
     <div className='w-full h-screen text-white px-8'>
       <nav className='w-full p-3 flex justify-between items-center'>
@@ -60,27 +62,54 @@ function App() {
         </div>
       </nav>
       <main className='w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center'>
-        <WeatherCard
-          place={thisLocation}
-          windspeed={weather.wspd}
-          humidity={weather.humidity}
-          temperature={weather.temp}
-          visibility={weather.visibility}
-          iconString={weather.conditions}
-          conditions={weather.conditions}
-          degrees={degrees}
-        />
-        <div className='flex justify-center gap-8 flex-wrap w-[60%]'>
-          {values?.slice(1, 7).map((curr) => (
-            <MiniCard
-              key={curr.datetime}
-              time={curr.datetime}
-              temp={curr.temp}
-              iconString={curr.conditions}
+        {isLoading ? (
+          <div className="flex justify-center items-center">
+          <svg
+            className="animate-spin h-8 w-8 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+            ></circle>
+            <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          </div>
+        ) : (
+          <>
+            <WeatherCard
+              place={thisLocation}
+              windspeed={weather.wspd}
+              humidity={weather.humidity}
+              temperature={weather.temp}
+              visibility={weather.visibility}
+              iconString={weather.conditions}
+              conditions={weather.conditions}
               degrees={degrees}
             />
-          ))}
-        </div>
+            <div className='flex justify-center gap-8 flex-wrap w-[60%]'>
+              {values?.slice(1, 7).map((curr) => (
+                <MiniCard
+                  key={curr.datetime}
+                  time={curr.datetime}
+                  temp={curr.temp}
+                  iconString={curr.conditions}
+                  degrees={degrees}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );
