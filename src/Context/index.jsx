@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import axios from 'axios';
+import { getWeatherData } from '../Services/weatherService';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,25 +17,8 @@ export const StateContextProvider = ({ children }) => {
     // fetch api
     const fetchWeather = async () => {
         setIsLoading(true);
-        const options = {
-            method: 'GET',
-            url: 'https://visual-crossing-weather.p.rapidapi.com/forecast',
-            params: {
-                aggregateHours: '24',
-                location: place,
-                contentType: 'json',
-                unitGroup: 'metric',
-                shortColumnNames: 0,
-            },
-            headers: {
-                'X-RapidAPI-Key': import.meta.env.VITE_API_KEY,
-                'X-RapidAPI-Host': 'visual-crossing-weather.p.rapidapi.com'
-            }
-        };
-
         try {
-            const response = await axios.request(options);
-            console.log(response.data);
+            const response = await getWeatherData(place);
             const thisData = Object.values(response.data.locations)[0];
             setLocation(thisData.address);
             setValues(thisData.values);
