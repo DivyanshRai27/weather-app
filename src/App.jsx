@@ -2,13 +2,14 @@ import { useState } from 'react';
 import './App.css';
 import search from './assets/icons/search.svg';
 import { useStateContext } from './Context';
-import { BackgroundLayout, WeatherCard, MiniCard } from './Components';
+import { WeatherCard, MiniCard } from './Components';
 
 function App() {
   // State to manage the input value for the search field
   const [input, setInput] = useState('');
 
   const { weather, thisLocation, values, place, setPlace } = useStateContext();
+  console.log(weather);
 
   // Function to update the place state with the input value and clear the input field
   const submitCity = () => {
@@ -39,7 +40,6 @@ function App() {
           />
         </div>
       </nav>
-      <BackgroundLayout />
       <main className='w-full flex flex-wrap gap-8 py-4 px-[10%] items-center justify-center'>
         <WeatherCard
           place={thisLocation}
