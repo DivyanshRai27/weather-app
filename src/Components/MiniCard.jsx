@@ -18,7 +18,7 @@ const iconMap = {
   wind,
 }
 
-const MiniCard = ({ time, temp, iconString }) => {
+const MiniCard = ({ time, temp, iconString, degrees }) => {
   const [icon, setIcon] = useState()
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const MiniCard = ({ time, temp, iconString }) => {
       <div className='w-full flex justify-center items-center flex-1'>
         <img src={icon} alt="forecast not available" className='w-[4rem] h-[4rem]' />
       </div>
-      <p className='text-center font-bold'>{temp}&deg;C</p>
+      <p className='text-center font-bold'>{degrees === 'F' ? (temp * 9/5) + 32 : temp} &deg;{degrees}</p>
     </div>
   )
 }

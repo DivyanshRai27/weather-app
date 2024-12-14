@@ -26,9 +26,10 @@ const WeatherCard = ({
   windspeed,
   humidity,
   place,
-  heatIndex,
+  visibility,
   iconString,
   conditions,
+  degrees,
 }) => {
   const [icon, setIcon] = useState(sun);
   const { time } = useDate();
@@ -48,7 +49,7 @@ const WeatherCard = ({
       <div className='flex w-full just-center items-center gap-4 mt-12 mb-4'>
         <img src={icon} alt="weather_icon" />
         <p className='font-bold text-5xl flex justify-center items-center'>
-          {temperature} &deg;C
+        {degrees === 'F' ? (temperature * 9/5) + 32 : temperature} &deg;{degrees}
         </p>
       </div>
       <div className='font-bold text-center text-xl'>{place}</div>
@@ -67,8 +68,8 @@ const WeatherCard = ({
         </div>
       </div>
       <div className='w-full p-3 mt-4 flex justify-between items-center'>
-        <p className='font-semibold text-lg'>Heat Index</p>
-        <p className='text-lg'>{heatIndex ? heatIndex : 'N/A'}</p>
+        <p className='font-semibold text-lg'>Visibility</p>
+        <p className='text-lg'>{visibility ? visibility : 'N/A'}</p>
       </div>
       <hr className='bg-slate-600' />
       <div className='w-full p-4 flex justify-center items-center text-3xl font-semibold'>
