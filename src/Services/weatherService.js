@@ -18,7 +18,6 @@ const getWeatherData = async (place) => {
   };
 
   const response = await axios.request(options);
-
   return response;
 };
 
