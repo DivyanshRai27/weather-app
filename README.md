@@ -22,7 +22,7 @@ The Weather App is a simple application that allows users to get the current wea
 
 1. **Clone the repository:**
   ```bash
-  git clone https://github.com/DivyanshRai27/weather_app.git
+  git clone https://github.com/DivyanshRai27/weather-app.git
   cd weather_app
   ```
 
