@@ -49,7 +49,7 @@ const WeatherCard = ({
       <div className='flex w-full just-center items-center gap-4 mt-12 mb-4'>
         <img src={icon} alt="weather_icon" />
         <p className='font-bold text-5xl flex justify-center items-center'>
-        {degrees === 'F' ? (temperature * 9/5) + 32 : temperature} &deg;{degrees}
+        {degrees === 'F' ? ((temperature * 9/5) + 32).toFixed(1) : temperature} &deg;{degrees}
         </p>
       </div>
       <div className='font-bold text-center text-xl'>{place}</div>

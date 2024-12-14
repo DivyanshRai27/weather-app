@@ -38,7 +38,7 @@ const MiniCard = ({ time, temp, iconString, degrees }) => {
       <div className='w-full flex justify-center items-center flex-1'>
         <img src={icon} alt="forecast not available" className='w-[4rem] h-[4rem]' />
       </div>
-      <p className='text-center font-bold'>{degrees === 'F' ? (temp * 9/5) + 32 : temp} &deg;{degrees}</p>
+      <p className='text-center font-bold'>{degrees === 'F' ? ((temp * 9/5) + 32).toFixed(1) : temp} &deg;{degrees}</p>
     </div>
   )
 }
