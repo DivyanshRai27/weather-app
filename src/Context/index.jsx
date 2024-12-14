@@ -1,7 +1,12 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const StateContext = createContext()
+
+const notFound = () => toast.error("Address not found");
 
 export const StateContextProvider = ({ children }) => {
     const [weather, setWeather] = useState({})
@@ -37,7 +42,7 @@ export const StateContextProvider = ({ children }) => {
         } catch (e) {
             console.error(e);
             // if the api throws error.
-            alert('This place does not exist')
+            notFound();
         }
     }
 
@@ -58,6 +63,7 @@ export const StateContextProvider = ({ children }) => {
             place
         }}>
             {children}
+        <ToastContainer />
         </StateContext.Provider>
     )
 }
